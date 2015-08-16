@@ -99,9 +99,8 @@ print() {
 			outnums=($($(<$outfile))
 			if cmp -s "$outfile" "$1$outfilename" || cmp -s "$outfile" "temp"; then
 				echo "1, $time" >> $rez
-			elif [[ $4 = 'izmena' && "($($(<$1$outfilename))[0]" == "($($(<$outfile))[0]" ]]; then
-				echo "0.6, $time" >> $rez
-			#kopirati iz test/
+			#dodati elif i odgovarajuci test ako su rezultati sem 0 i 1 moguci ili 
+			#postoji vise razlicitih resenja koja nisu u .sol/.out fajlu
 			else
 				echo "0, $time" >> $rez
 			fi
